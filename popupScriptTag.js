@@ -74,10 +74,10 @@ ready(function(){
     var formPopup = document.createElement('div');
     formPopup.setAttribute("class", "formPopup");
     formPopup.setAttribute("id", "popupForm");
-    /*formPopup.innerHTML = '<form action="/action_page.php" classs="formContainer"><h2>Please Log in</h2><label for="email">  <strong>E-mail</strong></label><input type="text" id="email" placeholder="Your Email" name="email" required><label for="psw">  <strong>Password</strong></label><input type="password" id="psw" placeholder="Your Password" name="psw" required><button type="submit" class="btn">Log in</button><button type="button" class="btn cancel" onclick="popDown()">Close</button></form>';*/
+    formPopup.innerHTML = '<form action="/action_page.php" classs="formContainer"><h2>Please Log in</h2><label for="email">  <strong>E-mail</strong></label><input type="text" id="email" placeholder="Your Email" name="email" required><label for="psw">  <strong>Password</strong></label><input type="password" id="psw" placeholder="Your Password" name="psw" required><button type="submit" class="btn">Log in</button><button type="button" class="btn cancel" onclick="popDown()">Close</button></form>';
     
     document.body.appendChild(loginPopup);
-    document.getElementByClassName('loginPopup').appendChild(formPopup);
+    document.getElementsByClassName('loginPopup')[0].appendChild(formPopup);
     
     /*const acwrapper = document.createElement('div');
     acwrapper.setAttribute("id", "ac-wrapper");
