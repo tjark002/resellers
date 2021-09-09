@@ -55,9 +55,9 @@ ready(function(){
     const acwrapper = document.createElement('div');
     acwrapper.setAttribute("id", "ac-wrapper");
     
-    const popup = document.createElement('div');
+    var popup = document.createElement('div');
     popup.setAttribute("id", "popup");
-    popup.innerHtml = "<center> <h2>Popup Content Here</h2></center>";
+    popup.innerHTML = "<center> <h2>Popup Content Here</h2></center>";
     
     document.body.appendChild(acwrapper);
     document.getElementById('ac-wrapper').appendChild(popup);
