@@ -43,7 +43,11 @@
 var style_rules = [];
 
 style_rules.push("#ac-wrapper" + " { position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(255,255,255,.6);z-index: 1001; } ");
-style_rules.push("#apopup" + " { width: 555px;height: 375px;background: #FFFFFF;border: 5px solid #000;border-radius: 25px;-moz-border-radius: 25px;-webkit-border-radius: 25px;box-shadow: #64686e 0px 0px 3px 3px;-moz-box-shadow: #64686e 0px 0px 3px 3px;-webkit-box-shadow: #64686e 0px 0px 3px 3px;position: relative;top: 150px; left: 375px; } ");
+style_rules.push("#popup" + " { width: 555px;height: 375px;background: #FFFFFF;border: 5px solid #000;border-radius: 25px;-moz-border-radius: 25px;-webkit-border-radius: 25px;box-shadow: #64686e 0px 0px 3px 3px;-moz-box-shadow: #64686e 0px 0px 3px 3px;-webkit-box-shadow: #64686e 0px 0px 3px 3px;position: relative;top: 150px; left: 375px; } ");
+style_rules.push(".loginPopup" + " { position: relative;text-align: center;width: 100%; } ");
+style_rules.push(".formPopup" + " { display: none;position: fixed;left: 45%;top: 5%;transform: translate(-50%, 5%);border: 3px solid #999999;z-index: 9; } ");
+style_rules.push(".formContainer" + " { max-width: 300px;padding: 20px;background-color: #fff; } ");
+
 
 var style = document.createElement('style');
 style.setAttribute('type', 'text/css');
@@ -63,7 +67,19 @@ function ready(callback){
 }
 
 ready(function(){
-    const acwrapper = document.createElement('div');
+    
+    var loginPopup = document.createElement('div');
+    loginPopup.setAttribute("class", "loginPopup");
+    
+    var formPopup = document.createElement('div');
+    formPopup.setAttribute("class", "formPopup");
+    formPopup.setAttribute("id", "popupForm");
+    formPopup.innerHTML = '<form action="/action_page.php" class="formContainer"><h2>Please Log in</h2><label for="email">  <strong>E-mail</strong></label><input type="text" id="email" placeholder="Your Email" name="email" required><label for="psw">  <strong>Password</strong></label><input type="password" id="psw" placeholder="Your Password" name="psw" required><button type="submit" class="btn">Log in</button><button type="button" class="btn cancel" onclick="closeForm()">Close</button></form>';
+    
+    document.body.appendChild(loginPopup);
+    document.getElementById('loginPopup').appendChild(formPopup);
+    
+    /*const acwrapper = document.createElement('div');
     acwrapper.setAttribute("id", "ac-wrapper");
     
     var popup = document.createElement('div');
@@ -71,11 +87,11 @@ ready(function(){
     popup.innerHTML = "<center> <h2>Popup Content Here</h2></center>";
     
     document.body.appendChild(acwrapper);
-    document.getElementById('ac-wrapper').appendChild(popup);
+    document.getElementById('ac-wrapper').appendChild(popup);*/
     
     console.log("It works");
     
-    //PopUp();
+    popUp();
 });
 /*document.g
 $(document).ready(function(){
@@ -84,6 +100,10 @@ $(document).ready(function(){
    },5000); // 5000 to load it after 5 seconds from page load
 });
 */
-function PopUp(){
-    document.getElementById('ac-wrapper').style.display="none"; 
+function popUp(){
+    document.getElementById("popupForm").style.display = "block";
+}
+
+function popDown(){
+    document.getElementById("popupForm").style.display = "none";
 }
