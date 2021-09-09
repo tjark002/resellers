@@ -63,6 +63,7 @@ ready(function(){
     document.getElementById('ac-wrapper').appendChild(popup);
     
     console.log("It works");
+    
     //PopUp();
 });
 /*document.g
