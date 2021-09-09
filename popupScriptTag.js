@@ -39,8 +39,6 @@
 		});
 
 });*/
-
-//<script>
     
 function ready(callback){
     // in case the document is already rendered
@@ -54,7 +52,18 @@ function ready(callback){
 }
 
 ready(function(){
-    alert('It works!');
+    const acwrapper = document.createElement('div');
+    acwrapper.setAttribute("id", "ac-wrapper");
+    
+    const popup = document.createElement('div');
+    popup.setAttribute("id", "popup");
+    popup.innerHtml = "<center> <h2>Popup Content Here</h2></center>";
+    
+    document.body.appendChild(template);
+    document.getElementById('ac-wrapper').appendChild(popup);
+    
+    console.log("It works");
+    //PopUp();
 });
 /*document.g
 $(document).ready(function(){
@@ -62,8 +71,7 @@ $(document).ready(function(){
       PopUp();
    },5000); // 5000 to load it after 5 seconds from page load
 });
-
+*/
 function PopUp(){
     document.getElementById('ac-wrapper').style.display="none"; 
-}*/
-//</script>
+}
