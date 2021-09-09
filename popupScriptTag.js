@@ -59,7 +59,7 @@ ready(function(){
     popup.setAttribute("id", "popup");
     popup.innerHtml = "<center> <h2>Popup Content Here</h2></center>";
     
-    document.body.appendChild(template);
+    document.body.appendChild(acwrapper);
     document.getElementById('ac-wrapper').appendChild(popup);
     
     console.log("It works");
