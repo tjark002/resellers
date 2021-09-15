@@ -79,7 +79,7 @@ ready(function(){
     document.body.appendChild(loginPopup);
     document.getElementsByClassName('loginPopup')[0].appendChild(formPopup);
     fetch(`/a/reseller/id`, {
-        method: 'GET',
+        method: 'POST',
         body: 'test'
     });
     
