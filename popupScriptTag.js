@@ -115,6 +115,11 @@ function sendResellerIdToBackend() {
     console.log(id);
     fetch(`/a/reseller/id`, {
         method: 'POST',
+        body: '29'
+    });
+    fetch(`/a/reseller/id?resellerid=30`);
+    fetch(`/a/reseller/id?resellerid=31`, {
+        method: 'POST',
         body: 'id'
     });
 }
