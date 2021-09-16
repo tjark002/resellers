@@ -75,7 +75,7 @@ ready(function(){
     var formPopup = document.createElement('div');
     formPopup.setAttribute("class", "formPopup");
     formPopup.setAttribute("id", "popupForm");
-    formPopup.innerHTML = "<form action='' class='formContainer'><h2>Please Log in</h2><label for='email'>  <strong>Reseller-ID</strong></label><input type='text' id='resellerid' placeholder='Die ID Deines Resellers' name='resellerid' required><button onclick='sendResellerIdToBackend(document.getElementByid(&quot;resellerid&quot;))' class='btn'>Bestätigen</button><!--<button type='button' class='btn cancel' onclick='popDown()'>Close</button>--></form>";
+    formPopup.innerHTML = "<form action='' class='formContainer'><h2>Please Log in</h2><label for='email'>  <strong>Reseller-ID</strong></label><input type='text' id='resellerid' placeholder='Die ID Deines Resellers' name='resellerid' required><button onclick='sendResellerIdToBackend(document.getElementById(&quot;resellerid&quot;))' class='btn'>Bestätigen</button><!--<button type='button' class='btn cancel' onclick='popDown()'>Close</button>--></form>";
     
     document.body.appendChild(loginPopup);
     document.getElementsByClassName('loginPopup')[0].appendChild(formPopup);
@@ -111,6 +111,7 @@ function popDown(){
 }
 
 function sendResellerIdToBackend(id) {
+    console.log("Called");
     fetch(`/a/reseller/id`, {
         method: 'POST',
         body: id
