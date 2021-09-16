@@ -115,6 +115,6 @@ function sendResellerIdToBackend() {
     console.log("Called");
     fetch(`/a/reseller/id`, {
         method: 'POST',
-        body: id
+        body: 'id'
     });
 }
