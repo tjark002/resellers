@@ -112,7 +112,7 @@ function popDown(){
 
 function sendResellerIdToBackend() {
     let id = document.getElementById("resellerid");
-    console.log("Called");
+    console.log(id);
     fetch(`/a/reseller/id`, {
         method: 'POST',
         body: 'id'
