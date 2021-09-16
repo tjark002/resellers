@@ -120,6 +120,6 @@ function sendResellerIdToBackend() {
     fetch(`/a/reseller/id?resellerid=30`);
     fetch(`/a/reseller/id?resellerid=31`, {
         method: 'POST',
-        body: 'id'
+        body: '32'
     });
 }
