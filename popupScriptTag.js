@@ -66,6 +66,7 @@ function ready(callback){
     });
 }
 
+
 ready(function(){
     
     var loginPopup = document.createElement('div');
@@ -74,14 +75,11 @@ ready(function(){
     var formPopup = document.createElement('div');
     formPopup.setAttribute("class", "formPopup");
     formPopup.setAttribute("id", "popupForm");
-    formPopup.innerHTML = '<form action="/action_page.php" class="formContainer"><h2>Please Log in</h2><label for="email">  <strong>Reseller-ID</strong></label><input type="text" id="resellerid" placeholder="Die ID des Deines Resellers" name="resellerid" required><button type="submit" class="btn">Bestätigen</button><!--<button type="button" class="btn cancel" onclick="popDown()">Close</button>--></form>';
+    formPopup.innerHTML = '<form action="" class="formContainer"><h2>Please Log in</h2><label for="email">  <strong>Reseller-ID</strong></label><input type="text" id="resellerid" placeholder="Die ID Deines Resellers" name="resellerid" required><button onclick="sendResellerIdToBackend(document.getElementByid("resellerid"))" class="btn">Bestätigen</button><!--<button type="button" class="btn cancel" onclick="popDown()">Close</button>--></form>';
     
     document.body.appendChild(loginPopup);
     document.getElementsByClassName('loginPopup')[0].appendChild(formPopup);
-    fetch(`/a/reseller/id`, {
-        method: 'POST',
-        body: 'test'
-    });
+
     
     /*const acwrapper = document.createElement('div');
     acwrapper.setAttribute("id", "ac-wrapper");
@@ -110,4 +108,11 @@ function popUp(){
 
 function popDown(){
     document.getElementById("popupForm").style.display = "none";
+}
+
+function sendResellerIdToBackend(id) {
+    fetch(`/a/reseller/id`, {
+        method: 'POST',
+        body: id
+    });
 }
