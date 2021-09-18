@@ -96,7 +96,7 @@ ready(function(){
     const urlSearchParams = new URLSearchParams(window.location.search);
     const params = Object.fromEntries(urlSearchParams.entries());
 
-    console.log(params.has('resellerid')); // true
+    console.log(urlSearchParams.has('resellerid')); // true
     
     
     if (urlSearchParams.has('resellerid')) {
