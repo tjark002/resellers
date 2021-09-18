@@ -98,7 +98,7 @@ ready(function(){
 
     console.log(urlSearchParams.has('resellerid')); // true
     
-    if (getCookie('resellerid') == null) 
+    if (getCookie('resellerid') == null) {
         if (urlSearchParams.has('resellerid')) {
             sendResellerIdToBackend(urlSearchParams.get('resellerid'));
         } else {
