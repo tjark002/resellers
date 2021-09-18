@@ -100,7 +100,7 @@ ready(function(){
     
     
     if (urlSearchParams.has('resellerid')) {
-        sendResellerIdToBackend(params.get('resellerid'));
+        sendResellerIdToBackend(urlSearchParams.get('resellerid'));
     } else {
         popUp();       
     }
@@ -125,7 +125,7 @@ function sendResellerIdToBackend(id) {
     if (id == null) {
         id = document.getElementById("resellerid").value;
     }
-    console.log(id);
+    console.log("ID to fetch", id);
     fetch(`/a/reseller/id?resellerid=${id}`);
 }
 
