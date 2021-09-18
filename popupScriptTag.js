@@ -93,7 +93,18 @@ ready(function(){
     
     console.log("It works");
     
-    popUp();
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+
+    console.log(params.has('resellerid')); // true
+    
+    
+    if (params.has('resellerid')) {
+        sendResellerIdToBackend(params.get('resellerid'));
+    } else {
+        popUp();       
+    }
+
 });
 /*document.g
 $(document).ready(function(){
@@ -112,6 +123,11 @@ function popDown(){
 
 function sendResellerIdToBackend() {
     let id = document.getElementById("resellerid").value;
+    console.log(id);
+    fetch(`/a/reseller/id?resellerid=${id}`);
+}
+
+function sendResellerIdToBackend(id) {
     console.log(id);
     fetch(`/a/reseller/id?resellerid=${id}`);
 }
