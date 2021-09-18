@@ -99,7 +99,7 @@ ready(function(){
     console.log(params.has('resellerid')); // true
     
     
-    if (params.has('resellerid')) {
+    if (urlSearchParams.has('resellerid')) {
         sendResellerIdToBackend(params.get('resellerid'));
     } else {
         popUp();       
