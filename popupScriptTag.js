@@ -98,11 +98,14 @@ ready(function(){
 
     console.log(urlSearchParams.has('resellerid')); // true
     
-    
-    if (urlSearchParams.has('resellerid')) {
-        sendResellerIdToBackend(urlSearchParams.get('resellerid'));
+    if (getCookie('resellerid') == null) 
+        if (urlSearchParams.has('resellerid')) {
+            sendResellerIdToBackend(urlSearchParams.get('resellerid'));
+        } else {
+            popUp();       
+        }
     } else {
-        popUp();       
+        sendResellerIdToBackend(getCookie('resellerid'));
     }
 
 });
@@ -127,6 +130,7 @@ function sendResellerIdToBackend(id) {
     }
     console.log("ID to fetch", id);
     fetch(`/a/reseller/id?resellerid=${id}`);
+    createCookie("resellerid", id, 90);
 }
 
 function createCookie(name, value, days) {
@@ -163,30 +167,12 @@ function getCookie(name) {
 
 function checkCookie() {
     // Get cookie using our custom function
-    var firstName = getCookie("firstName");
+    var resellerid = getCookie("resellerid");
     
-    if(firstName != "") {
-        alert("Welcome again, " + firstName);
+    if(resellerid != "") {
+        console.log("Cookie Reseller", resellerid)
+        return resellerid;
     } else {
-        firstName = prompt("Please enter your first name:");
-        if(firstName != "" && firstName != null) {
-            // Set cookie using our custom function
-            setCookie("firstName", firstName, 30);
-        }
-    }
-}
-
-function checkCookie2() {
-    // Get cookie using our custom function
-    var firstName = getCookie("firstName");
-    
-    if(firstName != "") {
-        alert("Welcome again, " + firstName);
-    } else {
-        firstName = prompt("Please enter your first name:");
-        if(firstName != "" && firstName != null) {
-            // Set cookie using our custom function
-            setCookie("firstName", firstName, 30);
-        }
+        return null;
     }
 }
