@@ -175,3 +175,18 @@ function checkCookie() {
         }
     }
 }
+
+function checkCookie2() {
+    // Get cookie using our custom function
+    var firstName = getCookie("firstName");
+    
+    if(firstName != "") {
+        alert("Welcome again, " + firstName);
+    } else {
+        firstName = prompt("Please enter your first name:");
+        if(firstName != "" && firstName != null) {
+            // Set cookie using our custom function
+            setCookie("firstName", firstName, 30);
+        }
+    }
+}
