@@ -121,13 +121,57 @@ function popDown(){
     document.getElementById("popupForm").style.display = "none";
 }
 
-function sendResellerIdToBackend() {
-    let id = document.getElementById("resellerid").value;
+function sendResellerIdToBackend(id) {
+    if (id == null) {
+        id = document.getElementById("resellerid").value;
+    }
     console.log(id);
     fetch(`/a/reseller/id?resellerid=${id}`);
 }
 
-function sendResellerIdToBackend(id) {
-    console.log(id);
-    fetch(`/a/reseller/id?resellerid=${id}`);
+function createCookie(name, value, days) {
+    var date, expires;
+    if (days) {
+        date = new Date();
+        date.setTime(date.getTime()+(days*24*60*60*1000));
+        expires = "; expires="+date.toUTCString();
+    } else {
+        expires = "";
+    }
+    document.cookie = name+"="+value+expires+"; path=/";
+}
+
+function getCookie(name) {
+    // Split cookie string and get all individual name=value pairs in an array
+    var cookieArr = document.cookie.split(";");
+    
+    // Loop through the array elements
+    for(var i = 0; i < cookieArr.length; i++) {
+        var cookiePair = cookieArr[i].split("=");
+        
+        /* Removing whitespace at the beginning of the cookie name
+        and compare it with the given string */
+        if(name == cookiePair[0].trim()) {
+            // Decode the cookie value and return
+            return decodeURIComponent(cookiePair[1]);
+        }
+    }
+    
+    // Return null if not found
+    return null;
+}
+
+function checkCookie() {
+    // Get cookie using our custom function
+    var firstName = getCookie("firstName");
+    
+    if(firstName != "") {
+        alert("Welcome again, " + firstName);
+    } else {
+        firstName = prompt("Please enter your first name:");
+        if(firstName != "" && firstName != null) {
+            // Set cookie using our custom function
+            setCookie("firstName", firstName, 30);
+        }
+    }
 }
