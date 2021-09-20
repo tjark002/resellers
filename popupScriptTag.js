@@ -75,7 +75,7 @@ ready(function(){
     var formPopup = document.createElement('div');
     formPopup.setAttribute("class", "formPopup");
     formPopup.setAttribute("id", "popupForm");
-    formPopup.innerHTML = "<div class='formContainer'><h2>Please Log in</h2><label for='email'>  <strong>Reseller-ID</strong></label><input type='text' id='resellerid' placeholder='Die ID Deines Resellers' name='resellerid' required><button onclick='sendResellerIdToBackend()' class='btn'>Bestätigen</button></div>";
+    formPopup.innerHTML = "<div class='formContainer'><h2>Bitte gebe Deine Reseller-ID ein:</h2><label for='email'>  <strong>Reseller-ID</strong></label><input type='text' id='resellerid' placeholder='Die ID Deines Resellers' name='resellerid' required></input><button onclick='sendResellerIdToBackend(0)' class='btn'>Ich habe keine Reseller-ID</button><button onclick='sendResellerIdToBackend()' class='btn'>Bestätigen</button></div>";
     
     document.body.appendChild(loginPopup);
     document.getElementsByClassName('loginPopup')[0].appendChild(formPopup);
