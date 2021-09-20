@@ -49,7 +49,7 @@ style_rules.push(".formPopup" + " { display: none;position: fixed;left: 45%;top:
 style_rules.push(".formContainer" + " { max-width: 300px;padding: 20px;background-color: #fff; border-radius:7px} ");
 style_rules.push("#resellerid" + " { background-color: white;color: #333333; border-color: #d9d9d9; border: 1px solid; background-clip: padding-box; border-radius: 5px; display: block; -webkit-box-sizing: border-box; box-sizing: border-box; width: 100%; padding: 0.9285714286em 0.7857142857em; word-break: normal; line-height: inherit; } ");
 style_rules.push(".btn" + " { cursor: pointer; display: inline; margin: 0 auto; justify-content: center; align-items: center; box-sizing: border-box; font: inherit; text-decoration: none; border: 0; border-radius: 0; background-color: var(--color-button-background); box-shadow: 0 0 0 .1rem var(--color-button-border); color: var(--color-button-text); min-width: 12rem; min-height: 4.5rem; transition: box-shadow var(--duration-short) ease; -webkit-appearance: none; appearance: none; } ");
-style_rules.push("#flex-btns" + "{ display: flex; justify-content: space-between; } ");
+style_rules.push("#flex-btns" + "{ display: flex; justify-content: space-between; margin-top: 20px; } ");
 
 
 var style = document.createElement('style');
