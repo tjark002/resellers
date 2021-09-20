@@ -45,8 +45,10 @@ var style_rules = [];
 style_rules.push("#ac-wrapper" + " { position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(255,255,255,.6);z-index: 1001; } ");
 style_rules.push("#popup" + " { width: 555px;height: 375px;background: #FFFFFF;border: 5px solid #000;border-radius: 25px;-moz-border-radius: 25px;-webkit-border-radius: 25px;box-shadow: #64686e 0px 0px 3px 3px;-moz-box-shadow: #64686e 0px 0px 3px 3px;-webkit-box-shadow: #64686e 0px 0px 3px 3px;position: relative;top: 150px; left: 375px; } ");
 style_rules.push(".loginPopup" + " { position: relative;text-align: center;width: 100%; } ");
-style_rules.push(".formPopup" + " { display: none;position: fixed;left: 45%;top: 5%;transform: translate(-50%, 5%);border: 3px solid #999999;z-index: 9; } ");
-style_rules.push(".formContainer" + " { max-width: 300px;padding: 20px;background-color: #fff; } ");
+style_rules.push(".formPopup" + " { display: none;position: fixed;left: 45%;top: 5%;transform: translate(-50%, 5%);border: 2px solid #333333;z-index: 9; border-radius:7px; } ");
+style_rules.push(".formContainer" + " { max-width: 300px;padding: 20px;background-color: #fff; border-radius:7px} ");
+style_rules.push("#resellerid" + " { background-color: white;color: #333333; border-color: #d9d9d9; border: 1px solid; background-clip: padding-box; border-radius: 5px; display: block; -webkit-box-sizing: border-box; box-sizing: border-box; width: 100%; padding: 0.9285714286em 0.7857142857em; word-break: normal; line-height: inherit; } ");
+style_rules.push(".btn" + " { cursor: pointer; display: inline-flex; justify-content: center; align-items: center; box-sizing: border-box; font: inherit; text-decoration: none; border: 0; border-radius: 0; background-color: var(--color-button-background); box-shadow: 0 0 0 .1rem var(--color-button-border); color: var(--color-button-text); min-width: 12rem; min-height: 4.5rem; transition: box-shadow var(--duration-short) ease; -webkit-appearance: none; appearance: none; } ");
 
 
 var style = document.createElement('style');
@@ -75,7 +77,7 @@ ready(function(){
     var formPopup = document.createElement('div');
     formPopup.setAttribute("class", "formPopup");
     formPopup.setAttribute("id", "popupForm");
-    formPopup.innerHTML = "<div class='formContainer'><h2>Bitte gebe Deine Reseller-ID ein:</h2><label for='email'>  <strong>Reseller-ID</strong></label><input type='text' id='resellerid' placeholder='Die ID Deines Resellers' name='resellerid' required></input><button onclick='sendResellerIdToBackend(0)' class='btn'>Ich habe keine Reseller-ID</button><button onclick='sendResellerIdToBackend()' class='btn'>Bestätigen</button></div>";
+    formPopup.innerHTML = "<div class='formContainer'><h2>Bitte gebe Deine Reseller-ID ein:</h2><label for='email'>  <strong>Reseller-ID</strong></label><input type='text' id='resellerid' placeholder='Die ID Deines Resellers' name='resellerid' required></input><button onclick='sendResellerIdToBackend(0)' class='btn'>Ich habe keine</button><button onclick='sendResellerIdToBackend()' class='btn'>Bestätigen</button></div>";
     
     document.body.appendChild(loginPopup);
     document.getElementsByClassName('loginPopup')[0].appendChild(formPopup);
