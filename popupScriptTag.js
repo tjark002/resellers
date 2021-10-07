@@ -154,10 +154,14 @@ function sendResellerIdToBackend(id) {
     if (id == null) {
         id = document.getElementById("resellerid").value;
     }
-    console.log("ID to fetch", id);
-    fetch(`/a/reseller/id?resellerid=${id}`);
-    createCookie("resellerid", id, 90);
-    popDown();
+    if (!id) {
+        console.log("ID to fetch", id);
+        fetch(`/a/reseller/id?resellerid=${id}`);
+        createCookie("resellerid", id, 90);
+        popDown();
+    } else {
+        alert("Bitte geben Sie eine ID ein");
+    }
 }
 
 function createCookie(name, value, days) {
