@@ -101,7 +101,7 @@ ready(function(){
 
     console.log(urlSearchParams.has('resellerid')); // true
     
-    if (getCookie('resellerid') == null) {
+    //if (getCookie('resellerid') == null) {
         if (urlSearchParams.has('resellerid')) {
             sendResellerIdToBackend(urlSearchParams.get('resellerid'));
         } else {
@@ -111,9 +111,9 @@ ready(function(){
                 checkout_buttons[i].disabled = true;
             }
         }
-    } else {
-        sendResellerIdToBackend(getCookie('resellerid'));
-    }
+    //} else {
+    //    sendResellerIdToBackend(getCookie('resellerid'));
+    //}
 
 });
 /*document.g
