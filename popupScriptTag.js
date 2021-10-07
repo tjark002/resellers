@@ -137,7 +137,7 @@ function popUp(){
 }
 
 function contactPage(){
-    window.open(contact_url);
+    window.open(contact_url, "_self");
 }
 
 function popDown(){
