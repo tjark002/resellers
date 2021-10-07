@@ -105,7 +105,11 @@ ready(function(){
         if (urlSearchParams.has('resellerid')) {
             sendResellerIdToBackend(urlSearchParams.get('resellerid'));
         } else {
-            popUp();       
+            popUp();     
+            var checkout_buttons = document.getElementsByName("checkout");
+            for (var i = 0; i < checkout_buttons.length; i++) {
+                checkout_buttons[i].disabled = true;
+            }
         }
     } else {
         sendResellerIdToBackend(getCookie('resellerid'));
