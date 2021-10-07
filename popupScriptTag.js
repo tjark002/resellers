@@ -110,6 +110,12 @@ ready(function(){
             for (var i = 0; i < checkout_buttons.length; i++) {
                 checkout_buttons[i].disabled = true;
             }
+            var add_buttons = document.getElementsByName("add");
+            for (var i = 0; i < add_buttons.length; i++) {
+                add_buttons[i].disabled = true;
+            }
+            var payment_div = document.getElementsByClass("shopify-payment-button");
+            payment_div.style.display = "none";
         }
     //} else {
     //    sendResellerIdToBackend(getCookie('resellerid'));
