@@ -42,6 +42,8 @@
 
 var style_rules = [];
 
+var contact_url = "https://elenaweeklyhow23.myshopify.com/pages/contact";
+
 style_rules.push("#ac-wrapper" + " { position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(255,255,255,.6);z-index: 1001; } ");
 style_rules.push("#popup" + " { width: 555px;height: 375px;background: #FFFFFF;border: 5px solid #000;border-radius: 25px;-moz-border-radius: 25px;-webkit-border-radius: 25px;box-shadow: #64686e 0px 0px 3px 3px;-moz-box-shadow: #64686e 0px 0px 3px 3px;-webkit-box-shadow: #64686e 0px 0px 3px 3px;position: relative;top: 150px; left: 375px; } ");
 style_rules.push(".loginPopup" + " { position: relative;text-align: center;width: 100%; } ");
@@ -101,6 +103,7 @@ ready(function(){
 
     console.log(urlSearchParams.has('resellerid')); // true
     
+    if (window.location.href != contact_url) {
     //if (getCookie('resellerid') == null) {
         if (urlSearchParams.has('resellerid')) {
             sendResellerIdToBackend(urlSearchParams.get('resellerid'));
@@ -110,7 +113,7 @@ ready(function(){
     //} else {
     //    sendResellerIdToBackend(getCookie('resellerid'));
     //}
-
+    }
 });
 /*document.g
 $(document).ready(function(){
@@ -134,6 +137,7 @@ function popUp(){
 }
 
 function contactPage(){
+    window.open(contact_url);
 }
 
 function popDown(){
