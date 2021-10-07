@@ -78,7 +78,7 @@ ready(function(){
     var formPopup = document.createElement('div');
     formPopup.setAttribute("class", "formPopup");
     formPopup.setAttribute("id", "popupForm");
-    formPopup.innerHTML = "<div class='formContainer'><h2>Bitte gebe Deine Reseller-ID ein:</h2><input type='text' id='resellerid' placeholder='Die ID Deines Resellers' name='resellerid' required></input><div id='flex-btns'><button onclick='sendResellerIdToBackend(0)' class='btn'>Ich habe keine</button><button onclick='sendResellerIdToBackend()' class='btn'>Bestätigen</button></div></div>";
+    formPopup.innerHTML = "<div class='formContainer'><h2>Bitte gebe Deine Reseller-ID ein:</h2><input type='text' id='resellerid' placeholder='Die ID Deines Resellers' name='resellerid' required></input><div id='flex-btns'><button onclick='contactPage()' class='btn'>Ich habe keine</button><button onclick='sendResellerIdToBackend()' class='btn'>Bestätigen</button></div></div>";
     
     document.body.appendChild(loginPopup);
     document.getElementsByClassName('loginPopup')[0].appendChild(formPopup);
@@ -131,6 +131,9 @@ function popUp(){
     }
     var payment_div = document.getElementsByClass("shopify-payment-button");
     payment_div.style.display = "none";
+}
+
+function contactPage(){
 }
 
 function popDown(){
