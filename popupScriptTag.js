@@ -106,16 +106,6 @@ ready(function(){
             sendResellerIdToBackend(urlSearchParams.get('resellerid'));
         } else {
             popUp();     
-            var checkout_buttons = document.getElementsByName("checkout");
-            for (var i = 0; i < checkout_buttons.length; i++) {
-                checkout_buttons[i].disabled = true;
-            }
-            var add_buttons = document.getElementsByName("add");
-            for (var i = 0; i < add_buttons.length; i++) {
-                add_buttons[i].disabled = true;
-            }
-            var payment_div = document.getElementsByClass("shopify-payment-button");
-            payment_div.style.display = "none";
         }
     //} else {
     //    sendResellerIdToBackend(getCookie('resellerid'));
@@ -131,10 +121,30 @@ $(document).ready(function(){
 */
 function popUp(){
     document.getElementById("popupForm").style.display = "block";
+    var checkout_buttons = document.getElementsByName("checkout");
+    for (var i = 0; i < checkout_buttons.length; i++) {
+        checkout_buttons[i].disabled = true;
+    }
+    var add_buttons = document.getElementsByName("add");
+    for (var i = 0; i < add_buttons.length; i++) {
+        add_buttons[i].disabled = true;
+    }
+    var payment_div = document.getElementsByClass("shopify-payment-button");
+    payment_div.style.display = "none";
 }
 
 function popDown(){
     document.getElementById("popupForm").style.display = "none";
+    var checkout_buttons = document.getElementsByName("checkout");
+    for (var i = 0; i < checkout_buttons.length; i++) {
+        checkout_buttons[i].disabled = false;
+    }
+    var add_buttons = document.getElementsByName("add");
+    for (var i = 0; i < add_buttons.length; i++) {
+        add_buttons[i].disabled = false;
+    }
+    var payment_div = document.getElementsByClass("shopify-payment-button");
+    payment_div.style.display = "block";
 }
 
 function sendResellerIdToBackend(id) {
@@ -144,6 +154,7 @@ function sendResellerIdToBackend(id) {
     console.log("ID to fetch", id);
     fetch(`/a/reseller/id?resellerid=${id}`);
     createCookie("resellerid", id, 90);
+    popDown();
 }
 
 function createCookie(name, value, days) {
