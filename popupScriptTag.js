@@ -41,7 +41,6 @@
 });*/
 
 var style_rules = [];
-//var uid = Math.floor(Math.random()*1000);
 
 var contact_url = "https://elenaweeklyhow23.myshopify.com/pages/contact";
 
@@ -81,7 +80,8 @@ ready(function(){
     var formPopup = document.createElement('div');
     formPopup.setAttribute("class", "formPopup");
     formPopup.setAttribute("id", "popupForm");
-    formPopup.innerHTML = "<div class='formContainer'><h2>Bitte gebe Deine Reseller-ID ein:</h2><input type='text' id='resellerid' placeholder='Die ID Deines Resellers' name='resellerid' required></input><div id='flex-btns'><button onclick='contactPage()' class='btn'>Ich habe keine</button><button onclick='sendResellerIdToBackend()' class='btn'>Bestätigen</button></div></div>";
+    formPopup.innerHTML = "<div class='formContainer'><h2>Bitte gebe Deine Reseller-ID ein:</h2><input type='text' id='resellerid' placeholder='Die ID Deines Resellers' name='resellerid' required></input><div id='flex-btns'><button onclick='contactPage()' class='btn'>Ich habe keine</button><button onclick='setResellerCookie()' class='btn'>Bestätigen</button></div></div>";
+    /*formPopup.innerHTML = "<div class='formContainer'><h2>Bitte gebe Deine Reseller-ID ein:</h2><input type='text' id='resellerid' placeholder='Die ID Deines Resellers' name='resellerid' required></input><div id='flex-btns'><button onclick='contactPage()' class='btn'>Ich habe keine</button><button onclick='sendResellerIdToBackend()' class='btn'>Bestätigen</button></div></div>";*/
     
     document.body.appendChild(loginPopup);
     document.getElementsByClassName('loginPopup')[0].appendChild(formPopup);
@@ -113,7 +113,29 @@ ready(function(){
 
     console.log(urlSearchParams.has('resellerid')); // true
     
-    if (window.location.href != contact_url) {
+    if (window.location.href.indexOf("thank_you") > -1) {
+        if (getCookie('resellerid') != null) {
+            sendResellerIdToBackend(getCookie('resellerid'));
+        } else {
+            console.log("Der Cookie war nicht gesetzt");
+        }
+    } else if (window.location.href == contact_url) {
+        //nichts
+    } else {
+        if (getCookie('resellerid') == null) {
+            if (urlSearchParams.has('resellerid')) {
+                setResellerCookie(urlSearchParams.get('resellerid'));
+                //sendResellerIdToBackend(urlSearchParams.get('resellerid'));
+            } else {
+                popUp();     
+            }
+        } else {
+            //nichts
+            //sendResellerIdToBackend(getCookie('resellerid'));
+        }
+    }
+    
+    /*if (window.location.href != contact_url) {
         if (getCookie('resellerid') == null) {
             if (urlSearchParams.has('resellerid')) {
                 sendResellerIdToBackend(urlSearchParams.get('resellerid'));
@@ -123,7 +145,7 @@ ready(function(){
         } else {
             sendResellerIdToBackend(getCookie('resellerid'));
         }
-    }
+    }*/
 });
 /*document.g
 $(document).ready(function(){
@@ -142,8 +164,9 @@ function popUp(){
     for (var i = 0; i < add_buttons.length; i++) {
         add_buttons[i].disabled = true;
     }
-    var payment_div = document.getElementsByClassName("shopify-payment-button");
-    payment_div.style.display = "none";
+    var payment_div = document.getElementsByClassName("shopify-payment-button")[0];
+    console.log(payment_div);
+    if (payment_div) payment_div.style.display = "none";
 }
 
 function contactPage(){
@@ -160,11 +183,34 @@ function popDown(){
     for (var i = 0; i < add_buttons.length; i++) {
         add_buttons[i].disabled = false;
     }
-    var payment_div = document.getElementsByClassName("shopify-payment-button");
-    payment_div.style.display = "block";
+    var payment_div = document.getElementsByClassName("shopify-payment-button")[0];
+    console.log(payment_div);
+    if (payment_div) payment_div.style.display = "block";
+}
+
+function setResellerCookie(id) {
+    if (id == null) {
+        id = document.getElementById("resellerid").value;
+    }
+    if (id != "") {
+        console.log("ID to set", id);
+        createCookie("resellerid", id, 90);
+        popDown();
+    } else {
+        alert("Bitte geben Sie eine ID ein");
+    }
 }
 
 function sendResellerIdToBackend(id) {
+    if (id && id != "") {
+        console.log("ID to fetch", id);
+        fetch(`/a/reseller/id?resellerid=${id}`);
+    } else {
+        console.log("An error occured");
+    }
+}
+
+/*function sendResellerIdToBackend(id) {
     if (id == null) {
         id = document.getElementById("resellerid").value;
     }
@@ -176,7 +222,7 @@ function sendResellerIdToBackend(id) {
     } else {
         alert("Bitte geben Sie eine ID ein");
     }
-}
+}*/
 
 /*function sendResellerIdToBackend(id) {
     if (id == null) {
