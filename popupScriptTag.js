@@ -87,8 +87,12 @@ ready(function(){
     document.getElementsByClassName('loginPopup')[0].appendChild(formPopup);
     
     var payButton = document.getElementById("continue_button");
-    var paySpan = payButton.childNodes[0];
-    console.log(paySpan.innerHTML);
+    if (payButton) {
+        var paySpan = payButton.childNodes[0];
+        if (paySpan) {  
+            console.log(paySpan.innerHTML);  
+        }
+    }
     console.log(payButton);
 
     
