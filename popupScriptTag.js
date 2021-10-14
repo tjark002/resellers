@@ -114,15 +114,15 @@ ready(function(){
     console.log(urlSearchParams.has('resellerid')); // true
     
     if (window.location.href != contact_url) {
-    //if (getCookie('resellerid') == null) {
-        if (urlSearchParams.has('resellerid')) {
-            sendResellerIdToBackend(urlSearchParams.get('resellerid'));
+        if (getCookie('resellerid') == null) {
+            if (urlSearchParams.has('resellerid')) {
+                sendResellerIdToBackend(urlSearchParams.get('resellerid'));
+            } else {
+                popUp();     
+            }
         } else {
-            popUp();     
+            sendResellerIdToBackend(getCookie('resellerid'));
         }
-    //} else {
-    //    sendResellerIdToBackend(getCookie('resellerid'));
-    //}
     }
 });
 /*document.g
@@ -142,7 +142,7 @@ function popUp(){
     for (var i = 0; i < add_buttons.length; i++) {
         add_buttons[i].disabled = true;
     }
-    var payment_div = document.getElementsByClass("shopify-payment-button");
+    var payment_div = document.getElementsByClassName("shopify-payment-button");
     payment_div.style.display = "none";
 }
 
@@ -160,7 +160,7 @@ function popDown(){
     for (var i = 0; i < add_buttons.length; i++) {
         add_buttons[i].disabled = false;
     }
-    var payment_div = document.getElementsByClass("shopify-payment-button");
+    var payment_div = document.getElementsByClassName("shopify-payment-button");
     payment_div.style.display = "block";
 }
 
