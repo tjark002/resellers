@@ -168,7 +168,7 @@ function sendResellerIdToBackend(id) {
     if (id == null) {
         id = document.getElementById("resellerid").value;
     }
-    if (!id) {
+    if (id != "") {
         console.log("ID to fetch", id);
         fetch(`/a/reseller/id?resellerid=${id}`);
         createCookie("resellerid", id, 90);
