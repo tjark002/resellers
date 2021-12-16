@@ -125,13 +125,13 @@ ready(function(){
         if (getCookie('resellerid') == null) {
             if (urlSearchParams.has('resellerid')) {
                 setResellerCookie(urlSearchParams.get('resellerid'));
-                //sendResellerIdToBackend(urlSearchParams.get('resellerid'));
+                sendResellerIdToBackend(urlSearchParams.get('resellerid'));
             } else {
                 popUp();     
             }
         } else {
             //nichts
-            //sendResellerIdToBackend(getCookie('resellerid'));
+            sendResellerIdToBackend(getCookie('resellerid'));
         }
     }
     
